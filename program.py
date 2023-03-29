@@ -1,22 +1,11 @@
-# Задача 12
-#  Петя и Катя – брат и сестра. Петя – студент, а Катя – школьница. Петя
-# помогает Кате по математике. Он задумывает два натуральных числа X и Y
-# (X,Y≤1000), а Катя должна их отгадать. Для этого Петя делает две подсказки.
-# Он называет сумму этих чисел S и их произведение P. Помогите Кате отгадать
-# задуманные Петей числа.
+# Требуется вывести все целые степени двойки (т.е. числа вида 2k), не
+# превосходящие числа N.
 
-from input_check import IntCheckedInput, IntCheckedInputLtd
+from input_check import IntCheckedInputLtd
 
-
-thinkedSum = int(IntCheckedInputLtd('Enter the sum of numbers', 2001))
-thinkedProd = int(IntCheckedInputLtd('Enter the product of numbers', 1000001    ))
-found = False
-for numberOne in range (thinkedSum):
-    if not found:
-        for numberTwo in range (thinkedProd):
-            if not found:
-                if numberOne+numberTwo == thinkedSum and numberOne*numberTwo == thinkedProd:
-                    print (f'Number one = {numberOne} and number two = {numberTwo}')
-                    found = True
-if not found:
-    print('It seems there is no decision..')
+limit = 1000000
+ceiling = IntCheckedInputLtd(f'Enter natural number less, than {limit}', limit)
+i = 0
+while 2 ** i <= ceiling:
+    print (f' 2^{i} = {2 ** i}')
+    i += 1
