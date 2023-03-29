@@ -1,26 +1,22 @@
-# Задача 10: На столе лежат n монеток. Некоторые из них лежат вверх решкой,
-# а некоторые – гербом. Определите минимальное число монеток, которые нужно перевернуть,
-# чтобы все монетки были повернуты вверх одной и той же стороной. Выведите минимальное количество монет,
-# которые нужно перевернуть
+# Задача 12
+#  Петя и Катя – брат и сестра. Петя – студент, а Катя – школьница. Петя
+# помогает Кате по математике. Он задумывает два натуральных числа X и Y
+# (X,Y≤1000), а Катя должна их отгадать. Для этого Петя делает две подсказки.
+# Он называет сумму этих чисел S и их произведение P. Помогите Кате отгадать
+# задуманные Петей числа.
 
-import math
-import input_check as IC
+from input_check import IntCheckedInput, IntCheckedInputLtd
 
-def answerOut(count:int):
-    print(f'Count of coins to be reversed is {count}')
-  
-coinsCount = int(IC.IntCheckedInput('Enter count of coins: '))
-headsCount = 0
-tailsCount = 0
 
-for i in range ( coinsCount ) :
-    u = IC.OneOrZero('If you see a head on the coin enter "1" else enter "0" for a tail.')
-    if int(u) == 1:
-        headsCount+=1
-    elif int(u) == 0:
-        tailsCount+=1
-
-if headsCount > tailsCount:
-    answerOut(tailsCount)
-elif tailsCount > headsCount:
-    answerOut(headsCount)
+thinkedSum = int(IntCheckedInputLtd('Enter the sum of numbers', 2001))
+thinkedProd = int(IntCheckedInputLtd('Enter the product of numbers', 1000001    ))
+found = False
+for numberOne in range (thinkedSum):
+    if not found:
+        for numberTwo in range (thinkedProd):
+            if not found:
+                if numberOne+numberTwo == thinkedSum and numberOne*numberTwo == thinkedProd:
+                    print (f'Number one = {numberOne} and number two = {numberTwo}')
+                    found = True
+if not found:
+    print('It seems there is no decision..')
